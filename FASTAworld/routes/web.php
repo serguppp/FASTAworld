@@ -6,6 +6,7 @@ use App\Http\Controllers\FileUploadController;
 use Illuminate\Support\Facades\Route;
 
 
+
 // Handle views
 
 Route::get('/', function () {
@@ -16,19 +17,19 @@ Route::get('/hello', function(){
     return view('hello');
 });
 
-Route::get('/database', function(){
-    return view('database');
-})->name('database');
-
 Route::get('/upload', function () {
     return view('upload');
 })->middleware(['auth', 'verified'])->name('upload');
 
+Route::get('/database', [FileUploadController::class, 'index'])->name('database');
+
 // Handle file operations
 
-Route::post('/uploadfile', [FileUploadController::class, 'upload'])->name('file.upload');
-
-Route::get('/files/{filename}', [FileUploadController::class, 'show'])->name('file.show');
+Route::get('/files', [FileUploadController::class, 'index'])->name('files.index');
+Route::post('/files/upload', action: [FileUploadController::class, 'upload'])->name('files.upload');
+Route::get('/files/{id}', [FileUploadController::class, 'show'])->name('files.show');
+Route::get('/files/{id}/edit', [FileUploadController::class, 'edit'])->name('files.edit');
+Route::get('/files/{id}/delete', [FileUploadController::class, 'delete'])->name('files.delete');
 
 // Handle auth operations
 

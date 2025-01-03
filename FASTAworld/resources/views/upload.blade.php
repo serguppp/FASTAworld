@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
 
                     <br/>
-                    <form id="uploadForm" action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data">
+                    <form id="uploadForm" action="{{ route('files.upload') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <x-grid-component :header="'Input sequence'">
                                 <input type="file" name="file" accept=".fasta, .fa">
