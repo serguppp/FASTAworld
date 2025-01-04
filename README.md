@@ -7,6 +7,8 @@ This application allows users to upload, analyze, and visualize nucleotide seque
 ### 1. **Upload FASTA Files**
    - Users can upload their own FASTA files for analysis.
    - The application supports `.fasta` file formats.
+   - **File Type Selection**: It is important to select the correct sequence type (e.g., DNA, RNA) during the file upload process. Some analyses, such as transcription and translation, require the correct file type to produce accurate results.
+
 
 ### 2. **Sequence Analysis**
    Perform various analyses on the nucleotide sequences within the uploaded FASTA file:
@@ -23,6 +25,17 @@ This application allows users to upload, analyze, and visualize nucleotide seque
    - **View File Details**: Display information such as file name, sequence type, and sequence data.
    - **Edit Files**: Owners can edit names and types of files.
    - **Delete Files**: Delete uploaded files if no longer needed.
+
+#### 4. **User Authentication**
+   - The authentication system is based on **Blaze** from Laravel, providing secure login, registration, and password management functionalities.
+   - Users can register, log in, and log out to manage their files and analyses.
+   - **Profile Management**: Users can update their personal information, including:
+     - **Change Name**: Update their display name.
+     - **Change Email**: Modify their registered email address.
+     - **Change Password**: Update their password for enhanced security.
+   - **Account Deletion**: Users have the option to delete their account, which removes all associated data from the system.
+   - Sessions are managed with Laravel's built-in features to ensure user-specific access to uploaded files and results.
+
 
 ## Installation
 
@@ -70,10 +83,34 @@ This application allows users to upload, analyze, and visualize nucleotide seque
 - View details of uploaded files including their name and analysis results.
 - Delete files you no longer need.
 
+## Project Structure
+
+The application follows a standard Laravel project structure, with the following key directories and files:
+
+- **app/**: Contains the core application logic, including models, controllers, and middleware.
+  - **Http/Controllers/**: The controllers that handle user requests, file uploads, and sequence analyses.
+  - **Models/**: Contains the file model (`FileUploadController.php`) for interacting with the database to manage uploaded files and their metadata.
+
+- **database/**: Contains the migrations and seeders for setting up the database schema and seeding data.
+  - **migrations/**: Database migrations for setting up tables.
+
+- **resources/**: Contains the views and assets for the front-end of the application.
+  - **views/**: Blade templates for rendering the user interface.
+  - **assets/**: Contains the CSS and JavaScript files used in the application.
+
+- **routes/**: Contains the `web.php` file that defines the application's routes for pages like uploading files, performing analyses, and managing user authentication.
+
+- **public/**: The public-facing directory for the application. It contains the `index.php` file that serves as the entry point.
+
+- **.env**: Configuration file for environment settings, including the database connection, application key, and other settings.
+
 ## Technologies Used
+
 - **PHP**: Backend framework for handling server-side logic.
 - **Laravel**: PHP framework used for routing, controllers, and database management.
 - **Biopython**: A Python library used to handle biological data analysis (e.g., FASTA file parsing and analysis).
+- **Blaze**: Authentication system for managing user registration, login, and sessions.
+- **MySQL**: Relational database management system used to store and manage user data, uploaded files, and analysis results.
 - **JavaScript (optional)**: For dynamic updates to the user interface.
 
 ## Contributing
