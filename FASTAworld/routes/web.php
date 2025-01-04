@@ -30,7 +30,7 @@ Route::post('/files/upload', action: [FileUploadController::class, 'upload'])->n
 Route::get('/files/{id}', [FileUploadController::class, 'show'])->name('files.show');
 Route::get('/files/{id}/edit', [FileUploadController::class, 'edit'])->name('files.edit');
 Route::get('/files/{id}/delete', [FileUploadController::class, 'delete'])->name('files.delete');
-
+Route::put('/files/{id}/update', [FileUploadController::class, 'update'])->name('files.update');
 // Handle auth operations
 
 Route::middleware('auth')->group(function () {

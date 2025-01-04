@@ -12,6 +12,7 @@ use Bio\SeqIO;
 
 class FileUploadController extends Controller
 {
+    //Adding files
     public function upload(Request $request)
     {
         $request->validate([
@@ -20,13 +21,18 @@ class FileUploadController extends Controller
     
         if ($request->hasFile('file')) {
             $file = $request->file('file');
+
+            $filename = $file->getClientOriginalName();
             $type = $request->input('sequence_type');
+            $user = Auth::user()->name;
+            $user_id = Auth::id();
             $path = $file->store('uploads', 'public');
 
             File::create([
-                'filename' => $file->getClientOriginalName(),
+                'filename' => $filename,
                 'type' => $type,
-                'user' => Auth::user()->name,
+                'user' => $user,
+                'user_id' => $user_id,
                 'file_path' => $path,
             ]);
 
@@ -37,9 +43,24 @@ class FileUploadController extends Controller
 
     }
 
-    public function edit($id){
+    //Updating files
+
+    public function update(Request $request, $id){
+        $file = File::findOrFail($id);
+
+        $filename = $request->input('filename');
+        $type = $request->input('sequence_type');
+
+        $file->update([
+            'filename' => $filename,
+            'type' => $type,
+        ]);
+
+        return redirect()->route('files.index')->with('success', 'File updated successfully.');
 
     }
+
+    // Deleting files
 
     public function delete($id){
         $file = File::findOrFail($id);
