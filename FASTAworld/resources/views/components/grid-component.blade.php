@@ -3,7 +3,7 @@
         {{ $header }}
     </div>
 
-    <div class="bg-gray-200 p-4">
+    <div class="bg-gray-200 p-4 break-all">
         {{ $slot }}
     </div>
 </div>
