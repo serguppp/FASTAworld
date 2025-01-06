@@ -19,7 +19,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('/welcome');
     }
 
     /**
@@ -45,6 +45,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('upload', absolute: false));
+        return redirect()->intended(route('upload', absolute: false));
     }
 }

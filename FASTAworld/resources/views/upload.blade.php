@@ -13,10 +13,38 @@
                     <br/>
                     <form id="uploadForm" action="{{ route('files.upload') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+
+                        <x-grid-component :header="'Name'">
+                            <input type="text" name="name" placeholder="name" class="border-gray-300 rounded px-2 py-1" required>
+                        </x-grid-component>
+
+                        <br/>
+
                         <x-grid-component :header="'Input sequence'">
                                 <input type="file" name="file" accept=".fasta, .fa">
+                        </x-grid-component>
 
-                            @if ($errors->any())
+                        <br/>
+                    
+                        <x-grid-component :header="'Sequence type'">
+                            <label for="dna" class="inline-flex items-center">
+                                <input type="radio" id="dna" name="sequence_type" value="dna" class="form-radio text-indigo-600" required>
+                                <span class="ml-2">DNA</span>
+                            </label>
+
+                            <label for="rna" class="inline-flex items-center">
+                                <input type="radio" id="rna" name="sequence_type" value="rna" class="form-radio text-indigo-600" required>
+                                <span class="ml-2">RNA</span>
+                            </label>
+
+                            <label for="protein" class="inline-flex items-center">
+                                <input type="radio" id="protein" name="sequence_type" value="protein" class="form-radio text-indigo-600" required>
+                                <span class="ml-2">Protein</span>
+                            </label>
+
+                        </x-grid-component>
+
+                        @if ($errors->any())
                                 <div>
                                     <ul>
                                         @foreach ($errors->all() as $error)
@@ -25,27 +53,6 @@
                                     </ul>
                                 </div>
                             @endif
-                        </x-grid-component>
-
-                        <br/>
-                    
-                        <x-grid-component :header="'Sequence type'">
-                            <label for="dna" class="inline-flex items-center">
-                                <input type="radio" id="dna" name="sequence_type" value="dna" class="form-radio text-indigo-600">
-                                <span class="ml-2">DNA</span>
-                            </label>
-
-                            <label for="rna" class="inline-flex items-center">
-                                <input type="radio" id="rna" name="sequence_type" value="rna" class="form-radio text-indigo-600">
-                                <span class="ml-2">RNA</span>
-                            </label>
-
-                            <label for="protein" class="inline-flex items-center">
-                                <input type="radio" id="protein" name="sequence_type" value="protein" class="form-radio text-indigo-600">
-                                <span class="ml-2">Protein</span>
-                            </label>
-
-                        </x-grid-component>
 
                         <br/>
 

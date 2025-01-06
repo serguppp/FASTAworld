@@ -24,7 +24,7 @@
                     <table class="table-auto w-full border-collapse border border-gray-200">
                         <thead>
                             <tr class="bg-gray-100">
-                                <th class="border border-gray-300 px-4 py-2 text-left">Filename</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Name</th>
                                 <th class="border border-gray-300 px-4 py-2 text-left">Type</th>
                                 <th class="border border-gray-300 px-4 py-2 text-left">Author</th>
                                 <th class="border border-gray-300 px-4 py-2 text-left">Uploaded At</th>
@@ -34,7 +34,7 @@
                         <tbody>
                             @forelse ($files as $file)
                             <tr>
-                                <td class="border border-gray-300 px-4 py-2">{{ $file->filename }}
+                                <td class="border border-gray-300 px-4 py-2">{{ $file->name }}
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">{{ $file->type }}</td>
                                 <td class="border border-gray-300 px-4 py-2">{{ $file->user }}</td>

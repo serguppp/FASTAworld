@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('/welcome');
     }
 
     public function register(Request $request)
@@ -31,12 +31,12 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('/login')->with('success', 'Registration successful! Please log in.');
+        return redirect('/welcome')->with('success', 'Registration successful! Please log in.');
     }
 
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('/welcome');
     }
 
     public function login(Request $request)
@@ -47,6 +47,6 @@ class UserController extends Controller
             return redirect()->intended('/');
         }
 
-        return redirect('/login')->with('error', 'Invalid credentials. Please try again.');
+        return redirect('/welcome')->with('error', 'Invalid credentials. Please try again.');
     }
 }
