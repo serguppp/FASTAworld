@@ -89,8 +89,7 @@ The application follows a standard Laravel project structure, with the following
 
 - **resources/**: Contains the views and assets for the front-end of the application.
   - **views/**: Blade templates for rendering the user interface.
-  - **assets/**: Contains the CSS and JavaScript files used in the application.
-
+   
 - **routes/**: Contains the `web.php` file that defines the application's routes for pages like uploading files, performing analyses, and managing user authentication.
 
 - **public/**: The public-facing directory for the application. It contains the `index.php` file that serves as the entry point.
