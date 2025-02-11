@@ -21,7 +21,7 @@ loginBtn.addEventListener('click', () => {
     showSection('login');
     localStorage.setItem('activeSection', 'login');
 });
-
+    
 registerBtn.addEventListener('click', () => {
     showSection('register');
     localStorage.setItem('activeSection', 'register');

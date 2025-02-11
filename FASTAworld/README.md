@@ -83,26 +83,44 @@ This application allows users to upload, analyze, and visualize nucleotide seque
 - View details of uploaded files including their name and analysis results.
 - Delete files you no longer need.
 
-## Project Structure
+## Project Structure  
 
-The application follows a standard Laravel project structure, with the following key directories and files:
+The application follows a standard Laravel project structure, with the following key directories and files:  
 
-- **app/**: Contains the core application logic, including models, controllers, and middleware.
-  - **Http/Controllers/**: The controllers that handle user requests, file uploads, and sequence analyses.
-  - **Models/**: Contains the file model (`FileUploadController.php`) for interacting with the database to manage uploaded files and their metadata.
+- **app/**: Contains the core application logic, including models, controllers, and middleware.  
+  - **Http/Controllers/**: Houses the controllers that handle user requests, file uploads, and sequence analyses.  
+    - The **auth/** and **requests/** directories, along with `ProfileController`, contain Laravel Breeze's default authentication controllers, which have been customized for this project.  
+    - `FileController` is responsible for managing files within the project.  
+  - **Models/**: Contains the `File` and `User` models, which interact with the database to manage uploaded files and their metadata.  
 
-- **database/**: Contains the migrations and seeders for setting up the database schema and seeding data.
-  - **migrations/**: Database migrations for setting up tables.
+- **Providers/**: Contains `AppServiceProvider`, which adds MIME rules for FASTA files.  
 
-- **resources/**: Contains the views and assets for the front-end of the application.
-  - **views/**: Blade templates for rendering the user interface.
-  - **assets/**: Contains the CSS and JavaScript files used in the application.
+- **database/**: Includes migrations and seeders for setting up the database schema and populating data.  
+  - **migrations/**: Contains database migrations for setting up tables, including default Laravel Breeze migrations for authentication, system management, and file storage.  
 
-- **routes/**: Contains the `web.php` file that defines the application's routes for pages like uploading files, performing analyses, and managing user authentication.
+- **resources/**: Holds the views and assets for the front-end of the application.  
+  - **views/**: Blade templates for rendering the user interface.  
+    - `welcome.blade.php`: The default homepage.  
+    - `upload.blade.php`: The default page after logging in.  
+    - **auth/**: Contains Laravel Breeze's default authentication views, which are not currently used but may be in the future.  
+    - **components/**: Contains reusable view components.  
+    - **files/**: Contains views for managing and displaying files.  
+    - **profile/**: Contains views for Laravel Breeze's default user profile management.  
+  - **css/** and **js/**: Stores the application's CSS and JavaScript files.  
 
-- **public/**: The public-facing directory for the application. It contains the `index.php` file that serves as the entry point.
+- **routes/**: Defines the application's routes.  
+  - `web.php`: Contains routes for file uploads, sequence analyses, and user authentication.  
+  - `auth.php`: Defines Laravel Breeze's authentication routes. Currently, only the registration and login routes are used.  
 
-- **.env**: Configuration file for environment settings, including the database connection, application key, and other settings.
+- **public/**: The public-facing directory of the application.  
+  - `index.php`: The main entry point for the application.  
+  - **storage/uploads/**: Stores all user-uploaded files and analysis results.  
+- **scripts/**: Contains Python scripts for analyzing FASTA files.  
+
+- **tests/**: Contains Laravel Breeze's default authentication tests, as well as custom tests for file management in the **File** directory.  
+
+- **.env**: Configuration file for environment settings, including database connection details, application keys, and other essential settings.  
+
 
 ## Technologies Used
 
@@ -111,7 +129,7 @@ The application follows a standard Laravel project structure, with the following
 - **Biopython**: A Python library used to handle biological data analysis (e.g., FASTA file parsing and analysis).
 - **Blaze**: Authentication system for managing user registration, login, and sessions.
 - **MySQL**: Relational database management system used to store and manage user data, uploaded files, and analysis results.
-- **JavaScript (optional)**: For dynamic updates to the user interface.
+- **JavaScript**: For dynamic updates to the user interface.
 
 ## Contributing
 Contributions are welcome! If you'd like to improve this project, please feel free to fork the repository, make your changes, and submit a pull request.

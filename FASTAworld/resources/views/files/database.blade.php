@@ -40,14 +40,21 @@
                                 <td class="border border-gray-300 px-4 py-2">{{ $file->user }}</td>
                                 <td class="border border-gray-300 px-4 py-2">{{ $file->created_at->format('Y-m-d H:i') }}</td>
                                 <td class="border border-gray-300 px-4 py-2 text-center">
-                                    <a href="{{ route('files.show', $file->id) }}" class="text-blue-600 hover:underline">View</a>
+                                    <div class="flex items-center justify-center space-x-2">
+                                        <a href="{{ route('files.show', $file->id) }}" class="text-blue-600 hover:underline">Show</a>
 
-                                    @if (Auth::id() == $file->user_id)
-                                    <button type="button" class="text-green-600 hover:underline" onclick="hnsToggle('edit-row', {{ $file->id }} )">Edit</button>
-                                    <a href="{{ route('files.delete', $file->id) }}" class="text-red-600 hover:underline">Delete</a>
-                                    @endif
+                                        @if (Auth::id() == $file->user_id)
+                                            <button type="button" class="text-green-600 hover:underline" onclick="hnsToggle('edit-row', {{ $file->id }} )">Edit</button>
 
+                                            <form action="{{ route('files.destroy', $file->id) }}" method="POST" onsubmit="return confirmDelete();" class="inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                                            </form>
+                                        @endif
+                                    </div>
                                 </td>
+
 
                             </tr>
 
