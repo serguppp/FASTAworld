@@ -6,6 +6,7 @@ This application allows users to upload, analyze, and visualize nucleotide seque
 
 ### 1. **Upload FASTA Files**
    - Users can upload their own FASTA files for analysis.
+   - Users can either paste the sequences [in progress] and create a new file in database
    - The application supports `.fasta` file formats.
    - **File Type Selection**: It is important to select the correct sequence type (e.g., DNA, RNA) during the file upload process. Some analyses, such as transcription and translation, require the correct file type to produce accurate results.
 
@@ -14,12 +15,12 @@ This application allows users to upload, analyze, and visualize nucleotide seque
    Perform various analyses on the nucleotide sequences within the uploaded FASTA file:
    - **GC Content Calculation**: Determine the percentage of guanine (G) and cytosine (C) in the sequence.
    - **Nucleotide Count**: Count occurrences of each nucleotide (A, T, C, G).
-   - **Transcription to RNA**: Convert the DNA sequence into RNA by replacing thymine (T) with uracil (U).
-   - **Translation to Protein**: Translate the nucleotide sequence into a protein sequence based on the genetic code.
-   - **Motif Search**: Search for specific motifs within the nucleotide sequence.
-   - **Reverse Complement**: Generate the reverse complement of the sequence.
-   - **Sequence Alignment**: Align two sequences to check for similarities or differences.
-   - **Palindromic Sequences**: Find sequences that read the same backward as forward.
+   - **Transcription to RNA**: Convert the DNA sequence into RNA by replacing thymine (T) with uracil (U). - in progress
+   - **Translation to Protein**: Translate the nucleotide sequence into a protein sequence based on the genetic code. - in progress
+   - **Motif Search**: Search for specific motifs within the nucleotide sequence. - in progress
+   - **Reverse Complement**: Generate the reverse complement of the sequence. - in progress
+   - **Sequence Alignment**: Align two sequences to check for similarities or differences. - in progress
+   - **Palindromic Sequences**: Find sequences that read the same backward as forward. - in progress
 
 ### 3. **File Management**
    - **View File Details**: Display information such as file name, sequence type, and sequence data.
@@ -41,16 +42,15 @@ This application allows users to upload, analyze, and visualize nucleotide seque
 
 1. Clone this repository to your local machine:
    ```bash
-   git clone https://github.com/yourusername/fasta-sequence-analysis.git
+   git clone https://github.com/serguppp/FASTAworld.git
 2. Navigate to the project directory:
     ```bash
-    cd fasta-sequence-analysis
+    cd ./FASTAworld/FASTAworld
 3. Install the dependencies:
     ```bash
-    composer Install
-4. Set up your .env file for database configuration:
-    ```bash
-    cp .env.example .env
+    composer install
+    npm install
+4. Allow to create SQLite database config
 5. Generate the application key:
     ```bash
     php artisan key:generate
@@ -69,19 +69,12 @@ This application allows users to upload, analyze, and visualize nucleotide seque
 - Select the sequence type (e.g., DNA, RNA, etc.).
 - Click "Upload" to submit the file for analysis.
 
-### 2. Performing Analyses
-- After uploading a file, you will be redirected to the analysis page where you can:
-  - Choose which analyses to perform (e.g., GC Content, Transcription, Translation).
-  - The results will be displayed on the same page once the analysis is complete.
+### 2. Viewing and Managing Files
+- The files are available on the "Database" page, where you can view, edit, or delete them.
+- After viewing a file, a page will be displayed with file details and a basic analysis (GC content, nucleotide count).
+- Advanced analysis will be performed after clicking the corresponding button (transcription to RNA, translation, motif search, reverse complement etc.) [in progress].
 
-### 3. Visualizing Results
-- GC content and nucleotide counts will be shown as numerical values.
-- Transcription and translation results will display the RNA and protein sequences.
-- Sequence alignments and motifs will be visualized with clear annotations.
-
-### 4. File Management
-- View details of uploaded files including their name and analysis results.
-- Delete files you no longer need.
+###
 
 ## Project Structure  
 
